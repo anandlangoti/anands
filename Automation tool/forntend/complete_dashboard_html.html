@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - VideoApprove</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1 class="logo">VideoApprove</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="upload.html" class="nav-link">Upload</a>
+            </div>
+            <div class="nav-user">
+                <span class="user-name" id="userName">Editor User</span>
+                <button class="btn btn-text" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="page-header">
+            <h2>My Videos</h2>
+            <a href="upload.html" class="btn btn-primary">+ Upload New Video</a>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon pending">📹</div>
+                <div class="stat-info">
+                    <h3>5</h3>
+                    <p>Pending Review</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon approved">✓</div>
+                <div class="stat-info">
+                    <h3>12</h3>
+                    <p>Approved</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon changes">↻</div>
+                <div class="stat-info">
+                    <h3>3</h3>
+                    <p>Changes Requested</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon total">📊</div>
+                <div class="stat-info">
+                    <h3>20</h3>
+                    <p>Total Videos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Videos Table -->
+        <div class="card">
+            <div class="card-header">
+                <h3>Recent Videos</h3>
+                <div class="filter-tabs">
+                    <button class="tab-btn active" data-filter="all">All</button>
+                    <button class="tab-btn" data-filter="pending">Pending</button>
+                    <button class="tab-btn" data-filter="approved">Approved</button>
+                    <button class="tab-btn" data-filter="changes">Changes</button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="video-table">
+                    <thead>
+                        <tr>
+                            <th>Video</th>
+                            <th>Platform</th>
+                            <th>Uploaded</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="videosTableBody">
+                        <!-- Videos will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Video - VideoApprove</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1 class="logo">VideoApprove</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="review.html" class="nav-link active">Review</a>
+            </div>
+            <div class="nav-user">
+                <span class="user-name" id="userName">Client User</span>
+                <button class="btn btn-text" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="page-header">
+            <a href="#" class="back-link">← Back to Videos</a>
+            <h2 id="videoTitle">Summer Campaign Video</h2>
+            <span class="status-badge pending" id="videoStatus">Pending Review</span>
+        </div>
+
+        <div class="review-layout">
+            <!-- Video Player Section -->
+            <div class="video-section">
+                <div class="card video-player-card">
+                    <div class="video-player" id="videoPlayer">
+                        <!-- Sample video player -->
+                        <video controls width="100%">
+                            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    
+                    <div class="video-info">
+                        <div class="video-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Platform:</span>
+                                <span class="platform-tag youtube" id="videoPlatform">YouTube</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Uploaded:</span>
+                                <span id="uploadDate">Dec 25, 2025</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">By:</span>
+                                <span id="uploadedBy">John Editor</span>
+                            </div>
+                        </div>
+                        
+                        <div class="video-description">
+                            <h4>Description</h4>
+                            <p id="videoDescription">
+                                This is our summer campaign video showcasing the new product line. 
+                                The video includes lifestyle shots, product features, and customer testimonials.
+                                Duration optimized for YouTube's algorithm.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback Section -->
+            <div class="feedback-section">
+                <!-- Action Buttons -->
+                <div class="card action-card">
+                    <h3>Review Actions</h3>
+                    <div class="action-buttons">
+                        <button class="btn btn-success btn-block" onclick="approveVideo()">
+                            ✓ Approve Video
+                        </button>
+                        <button class="btn btn-warning btn-block" onclick="requestChanges()">
+                            ↻ Request Changes
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Comment Box -->
+                <div class="card comment-card">
+                    <h3>Feedback & Comments</h3>
+                    <form id="commentForm">
+                        <div class="form-group">
+                            <textarea 
+                                id="commentText" 
+                                rows="5"
+                                placeholder="Add your feedback here... (optional for approval, required for change requests)"
+                            ></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Add Comment</button>
+                    </form>
+                </div>
+
+                <!-- Comment History -->
+                <div class="card comments-history">
+                    <h3>Comment History</h3>
+                    <div class="comments-list" id="commentsList">
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <strong>Client User</strong>
+                                <span class="comment-time">2 days ago</span>
+                            </div>
+                            <p class="comment-text">
+                                Could we adjust the color grading in the first 10 seconds? 
+                                It seems a bit too dark.
+                            </p>
+                        </div>
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <strong>John Editor</strong>
+                                <span class="comment-time">1 day ago</span>
+                            </div>
+                            <p class="comment-text">
+                                Adjusted the color grading as requested. Please review the updated version.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Version History -->
+                <div class="card version-card">
+                    <h3>Version History</h3>
+                    <div class="version-list">
+                        <div class="version-item current">
+                            <div class="version-info">
+                                <strong>Version 2</strong>
+                                <span class="version-tag">Current</span>
+                            </div>
+                            <span class="version-date">Dec 25, 2025</span>
+                        </div>
+                        <div class="version-item">
+                            <div class="version-info">
+                                <strong>Version 1</strong>
+                            </div>
+                            <span class="version-date">Dec 23, 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Approval Modal -->
+    <div class="modal" id="approvalModal">
+        <div class="modal-content">
+            <h3>Confirm Approval</h3>
+            <p>Are you sure you want to approve this video? The editor will be notified.</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-success" onclick="confirmApproval()">Confirm Approval</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Changes Modal -->
+    <div class="modal" id="changesModal">
+        <div class="modal-content">
+            <h3>Request Changes</h3>
+            <p>Please provide feedback on what needs to be changed:</p>
+            <textarea id="changesText" rows="4" placeholder="Describe the changes needed..."></textarea>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn btn-warning" onclick="confirmChanges()">Submit Request</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

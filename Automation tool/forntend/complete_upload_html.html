@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Video - VideoApprove</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1 class="logo">VideoApprove</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="upload.html" class="nav-link active">Upload</a>
+            </div>
+            <div class="nav-user">
+                <span class="user-name" id="userName">Editor User</span>
+                <button class="btn btn-text" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="page-header">
+            <h2>Upload New Video</h2>
+        </div>
+
+        <div class="upload-container">
+            <div class="card upload-card">
+                <form id="uploadForm" class="upload-form">
+                    <!-- File Upload Area -->
+                    <div class="form-group">
+                        <label>Video File</label>
+                        <div class="upload-dropzone" id="dropzone">
+                            <input 
+                                type="file" 
+                                id="videoFile" 
+                                accept="video/*"
+                                style="display: none;"
+                            >
+                            <div class="upload-icon">📹</div>
+                            <p class="upload-text">
+                                <strong>Click to upload</strong> or drag and drop
+                            </p>
+                            <p class="upload-hint">MP4, MOV, AVI up to 500MB</p>
+                        </div>
+                        <div class="file-preview" id="filePreview" style="display: none;">
+                            <div class="preview-info">
+                                <span class="file-icon">🎬</span>
+                                <span class="file-name" id="fileName"></span>
+                                <button type="button" class="btn-remove" id="removeFile">×</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Details -->
+                    <div class="form-group">
+                        <label for="videoTitle">Video Title *</label>
+                        <input 
+                            type="text" 
+                            id="videoTitle" 
+                            name="title"
+                            placeholder="Enter video title"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="videoCaption">Caption / Description</label>
+                        <textarea 
+                            id="videoCaption" 
+                            name="caption"
+                            rows="4"
+                            placeholder="Add a caption or description for your video"
+                        ></textarea>
+                    </div>
+
+                    <!-- Platform Selection -->
+                    <div class="form-group">
+                        <label>Target Platform *</label>
+                        <div class="platform-grid">
+                            <label class="platform-option">
+                                <input type="radio" name="platform" value="youtube" required>
+                                <div class="platform-card">
+                                    <div class="platform-icon youtube">▶</div>
+                                    <span>YouTube</span>
+                                </div>
+                            </label>
+                            <label class="platform-option">
+                                <input type="radio" name="platform" value="instagram" required>
+                                <div class="platform-card">
+                                    <div class="platform-icon instagram">📷</div>
+                                    <span>Instagram</span>
+                                </div>
+                            </label>
+                            <label class="platform-option">
+                                <input type="radio" name="platform" value="tiktok" required>
+                                <div class="platform-card">
+                                    <div class="platform-icon tiktok">♪</div>
+                                    <span>TikTok</span>
+                                </div>
+                            </label>
+                            <label class="platform-option">
+                                <input type="radio" name="platform" value="facebook" required>
+                                <div class="platform-card">
+                                    <div class="platform-icon facebook">f</div>
+                                    <span>Facebook</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Client Assignment -->
+                    <div class="form-group">
+                        <label for="clientSelect">Assign to Client *</label>
+                        <select id="clientSelect" name="client" required>
+                            <option value="">Select a client</option>
+                            <option value="client1">Acme Corp</option>
+                            <option value="client2">TechStart Inc</option>
+                            <option value="client3">Brand Studio</option>
+                            <option value="client4">Creative Agency</option>
+                        </select>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <a href="dashboard.html" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Upload Video</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Upload Tips -->
+            <div class="upload-tips">
+                <h3>Upload Tips</h3>
+                <ul>
+                    <li>✓ Ensure your video is in MP4, MOV, or AVI format</li>
+                    <li>✓ Keep file size under 500MB for faster upload</li>
+                    <li>✓ Choose the correct platform for optimal formatting</li>
+                    <li>✓ Add clear titles and descriptions for easy tracking</li>
+                    <li>✓ Clients will be notified via email when assigned</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
